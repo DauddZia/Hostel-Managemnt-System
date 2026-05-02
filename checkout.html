@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout / Vacate | Hostel Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="mobile-nav">
+        <a href="dashboard.html" class="mobile-nav-link">
+            <i class="fas fa-th-large"></i>
+            <span>Home</span>
+        </a>
+        <a href="rooms.html" class="mobile-nav-link">
+            <i class="fas fa-door-open"></i>
+            <span>Rooms</span>
+        </a>
+        <a href="allocation.html" class="mobile-nav-link">
+            <i class="fas fa-user-plus"></i>
+            <span>Alloc</span>
+        </a>
+        <a href="checkout.html" class="mobile-nav-link active">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Exit</span>
+        </a>
+    </nav>
+
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fas fa-hotel"></i>
+            <span>HostelEase</span>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="rooms.html" class="nav-link">
+                    <i class="fas fa-door-open"></i>
+                    <span>Rooms</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="allocation.html" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Allocation</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="checkout.html" class="nav-link active">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Checkout</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="fade-in">
+            <h1>Checkout / Vacate</h1>
+            <p class="subtitle">Process room vacations and student checkouts</p>
+        </header>
+
+        <div class="glass-card fade-in">
+            <h2 style="margin-bottom: 1.5rem;">Occupied Rooms</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Room ID</th>
+                            <th>Student Name</th>
+                            <th>Room Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="checkout-list">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Vacate Confirmation Modal -->
+    <div id="vacate-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Vacate</h2>
+                <button class="close-btn" onclick="closeVacateModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to vacate <span id="vacate-room-id-display" style="font-weight: bold; color: var(--accent);"></span>?</p>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-top: 0.5rem;">This will remove the student from the database and free up the room.</p>
+                <input type="hidden" id="vacate-room-id-hidden">
+                <input type="hidden" id="vacate-student-name-hidden">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeVacateModal()">Cancel</button>
+                <button class="btn btn-danger" onclick="confirmVacate()">Vacate Room</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

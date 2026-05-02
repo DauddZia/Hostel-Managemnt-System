@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Management | Hostel Management System</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="mobile-nav">
+        <a href="dashboard.html" class="mobile-nav-link">
+            <i class="fas fa-th-large"></i>
+            <span>Home</span>
+        </a>
+        <a href="rooms.html" class="mobile-nav-link active">
+            <i class="fas fa-door-open"></i>
+            <span>Rooms</span>
+        </a>
+        <a href="allocation.html" class="mobile-nav-link">
+            <i class="fas fa-user-plus"></i>
+            <span>Alloc</span>
+        </a>
+        <a href="checkout.html" class="mobile-nav-link">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Exit</span>
+        </a>
+    </nav>
+
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fas fa-hotel"></i>
+            <span>HostelEase</span>
+        </div>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a href="dashboard.html" class="nav-link">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="rooms.html" class="nav-link active">
+                    <i class="fas fa-door-open"></i>
+                    <span>Rooms</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="allocation.html" class="nav-link">
+                    <i class="fas fa-user-plus"></i>
+                    <span>Allocation</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="checkout.html" class="nav-link">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Checkout</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="main-content">
+        <header class="fade-in">
+            <h1>Room Management</h1>
+            <p class="subtitle">View and manage hostel room availability</p>
+        </header>
+
+        <div class="glass-card fade-in">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                <h2>All Rooms</h2>
+                <div style="display: flex; gap: 0.5rem;">
+                    <button class="btn btn-outline btn-sm">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                    <button class="btn btn-primary btn-sm" onclick="handleAddRoom()">
+                        <i class="fas fa-plus"></i> Add Room
+                    </button>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Room ID</th>
+                            <th>Type</th>
+                            <th>Price / Month</th>
+                            <th>Status</th>
+                            <th>Occupied By</th>
+                        </tr>
+                    </thead>
+                    <tbody id="rooms-table-body">
+                        <!-- Populated by JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Room Modal -->
+    <div id="add-room-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center;">
+        <div class="glass-card" style="width: 400px; padding: 2rem;">
+            <h2 style="margin-bottom: 1.5rem;">Add New Room</h2>
+            <form onsubmit="event.preventDefault(); handleAddRoomSubmit();">
+                <div class="form-group">
+                    <label>Room Number</label>
+                    <input type="text" id="modal-room-id" required placeholder="e.g. 301">
+                </div>
+                <div class="form-group">
+                    <label>Room Type</label>
+                    <select id="modal-room-type" required>
+                        <option value="Single">Single</option>
+                        <option value="Double">Double</option>
+                        <option value="Triple">Triple</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Monthly Price (Rs.)</label>
+                    <input type="number" id="modal-room-price" required placeholder="10000">
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 2rem;">
+                    <button type="submit" class="btn btn-primary" style="flex: 1;">Add Room</button>
+                    <button type="button" class="btn btn-outline" onclick="closeModal()" style="flex: 1;">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
